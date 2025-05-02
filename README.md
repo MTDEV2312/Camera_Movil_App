@@ -79,7 +79,7 @@ El archivo [`tab2.page.html`](src/app/tab2/tab2.page.html) fue restaurado a su c
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Photo Gallery
+      TAB 2
     </ion-title>
   </ion-toolbar>
 </ion-header>
