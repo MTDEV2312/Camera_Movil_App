@@ -11,6 +11,8 @@ export class Tab3Page {
 
   constructor(public photoService:PhotoService) {}
 
+  mostrarImagenes = false;
+  
   addPhotoToGallery() {
     this.photoService.addNewToGallery();
   }

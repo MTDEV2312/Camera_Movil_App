@@ -1,20 +1,27 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Photo Gallery
-    </ion-title>
+    <ion-title> Photo Gallery </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-grid>
+  <ion-fab *ngIf="!mostrarImagenes" vertical="top" horizontal="start" slot="fixed" style="top: 20px;">
+    <ion-fab-button color="tertiary" (click)="mostrarImagenes = true">
+      <ion-icon name="image"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <ion-grid *ngIf="mostrarImagenes">
     <ion-row>
-      <ion-col size="6" *ngFor="let photo of photoService.photos; index as position">
+      <ion-col
+        size="6"
+        *ngFor="let photo of photoService.photos; index as position"
+      >
         <ion-card>
           <img [src]="photo.webviewPath" />
           <ion-card-header>
             <ion-card-subtitle>{{photo.filepath}}</ion-card-subtitle>
-          </ion-card-header> 
+          </ion-card-header>
         </ion-card>
       </ion-col>
     </ion-row>
