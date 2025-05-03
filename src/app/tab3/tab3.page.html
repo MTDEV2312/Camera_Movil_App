@@ -28,8 +28,16 @@
   </ion-grid>
 
   <ion-fab vertical="bottom" horizontal="center" slot="fixed">
-    <ion-fab-button (click)="addPhotoToGallery()">
+    <ion-fab-button id="camera-fab">
       <ion-icon name="camera"></ion-icon>
     </ion-fab-button>
   </ion-fab>
+  <ion-popover trigger="camera-fab" triggerAction="click" [showBackdrop]="true">
+    <ng-template>
+      <ion-content class="ion-padding">
+        <ion-button expand="block" (click)="addPhotoToGallery(100)" color="light">Tomar foto (100%)</ion-button>
+        <ion-button expand="block" (click)="addPhotoToGallery(50)" color="light">Tomar foto (50%)</ion-button>
+      </ion-content>
+    </ng-template>
+  </ion-popover>
 </ion-content>

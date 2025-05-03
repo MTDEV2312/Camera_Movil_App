@@ -13,8 +13,8 @@ export class Tab3Page {
 
   mostrarImagenes = false;
   
-  addPhotoToGallery() {
-    this.photoService.addNewToGallery();
+  addPhotoToGallery(quality: number = 100) {
+    this.photoService.addNewToGallery(quality);
   }
   async ngOnInit() {
     await this.photoService.loadSaved();
