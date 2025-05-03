@@ -1,122 +1,38 @@
-# Migración de la galería de fotos de Tab2 a Tab3
+# CameraApp - Cambios en la Galería de Fotos (Tab3)
 
-## Descripción
+## Descripción de los cambios
 
-El código responsable de mostrar la galería de fotos fue **movido de la Tab2 a la Tab3**. Ahora, la galería y la funcionalidad para agregar nuevas fotos se encuentran en la Tab3. La Tab2 fue restaurada a su estado por defecto, mostrando únicamente el contenido básico generado por Ionic.
+Ahora las fotos no se muestran automáticamente al entrar a la galería. Se implementó un botón flotante que permite al usuario cargar y visualizar las fotos cuando lo desee, mejorando la experiencia y el control sobre la visualización de imágenes.
 
----
+### Cambios principales
 
-## Cambios realizados
+1. **No mostrar fotos automáticamente**
+   - Al ingresar a la pestaña de galería, las fotos no se cargan ni se muestran de inmediato.
+   - El grid de imágenes permanece oculto hasta que el usuario lo solicite.
 
-### 1. Código de la galería movido de Tab2 a Tab3
+2. **Botón flotante para cargar fotos**
+   - Se agregó un botón flotante (`ion-fab`) en la parte superior izquierda de la pantalla.
+   - Este botón utiliza el color `tertiary` para asegurar buen contraste en ambos temas (claro y oscuro).
+   - El botón solo aparece si las imágenes no están siendo mostradas (`*ngIf="!mostrarImagenes"`).
+   - Al presionar el botón, se cargan y muestran las fotos en la galería, y el botón desaparece.
 
-Antes, el archivo `tab2.page.html` contenía la galería de fotos y el botón para agregar nuevas imágenes. Ahora, este código se encuentra en [`tab3.page.html`](src/app/tab3/tab3.page.html):
+3. **Visualización controlada por el usuario**
+   - El usuario decide cuándo cargar y ver las fotos, haciendo la interfaz más intuitiva y menos invasiva.
 
-```html
-<!-- src/app/tab3/tab3.page.html -->
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Photo Gallery
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+4. **Botón flotante para agregar fotos**
+   - Se mantiene el botón flotante en la parte inferior central para agregar nuevas fotos a la galería en cualquier momento.
 
-<ion-content [fullscreen]="true">
-  <ion-grid>
-    <ion-row>
-      <ion-col size="6" *ngFor="let photo of photoService.photos; index as position">
-        <ion-card>
-          <img [src]="photo.webviewPath" />
-          <ion-card-header>
-            <ion-card-subtitle>{{photo.filepath}}</ion-card-subtitle>
-          </ion-card-header> 
-        </ion-card>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+### Archivos modificados
 
-  <ion-fab vertical="bottom" horizontal="center" slot="fixed">
-    <ion-fab-button (click)="addPhotoToGallery()">
-      <ion-icon name="camera"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
-</ion-content>
-```
+- `src/app/tab3/tab3.page.html`: Se implementó la lógica para mostrar el botón flotante y controlar la visualización de las fotos.
+- `src/app/tab3/tab3.page.ts`: Se agregó la variable `mostrarImagenes` para manejar el estado de visibilidad de la galería.
 
-Y en el archivo [`tab3.page.ts`](src/app/tab3/tab3.page.ts):
+### Ejemplo visual
 
-```typescript
-// src/app/tab3/tab3.page.ts
-import { Component } from '@angular/core';
-import { PhotoService } from '../services/photo.service';
-
-@Component({
-  selector: 'app-tab3',
-  templateUrl: 'tab3.page.html',
-  styleUrls: ['tab3.page.scss'],
-  standalone: false,
-})
-export class Tab3Page {
-
-  constructor(public photoService: PhotoService) {}
-
-  addPhotoToGallery() {
-    this.photoService.addNewToGallery();
-  }
-  async ngOnInit() {
-    await this.photoService.loadSaved();
-  }
-}
-```
-
-### 2. Tab2 restaurada a su estado por defecto
-
-El archivo [`tab2.page.html`](src/app/tab2/tab2.page.html) fue restaurado a su contenido básico, eliminando la galería y dejando solo el contenido generado por defecto:
-
-```html
-<!-- src/app/tab2/tab2.page.html -->
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      TAB 2
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <app-explore-container name="Tab 2 page"></app-explore-container>
-</ion-content>
-```
-
-Y el archivo [`tab2.page.ts`](src/app/tab2/tab2.page.ts) permanece con la estructura básica del componente:
-
-```typescript
-// src/app/tab2/tab2.page.ts
-import { Component } from '@angular/core';
-
-@Component({
-  selector: 'app-tab2',
-  templateUrl: 'tab2.page.html',
-  styleUrls: ['tab2.page.scss'],
-  standalone: false,
-})
-export class Tab2Page {
-  constructor() {}
-}
-```
+- Al entrar a la pestaña, solo se ve el botón flotante para cargar fotos.
+- Al presionar el botón, se muestran las fotos y el botón desaparece.
+- El botón para agregar nuevas fotos siempre está visible en la parte inferior.
 
 ---
 
-## Resultado
-
-- **Tab3**: Ahora muestra la galería de fotos y permite agregar nuevas imágenes, mostrando el nombre del archivo debajo de cada foto.
-- **Tab2**: Vuelve a mostrar solo el contenido por defecto, sin la galería de fotos.
-
-Esto mejora la organización de la aplicación y deja la galería exclusivamente en la pestaña de fotos (Tab3).
+Con estos cambios, el usuario tiene el control de cuándo cargar y visualizar las fotos en la galería, mejorando la experiencia en cualquier pestaña de la aplicación.
