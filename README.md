@@ -1,5 +1,9 @@
 # CameraApp
 
+# **Descarga el APK aquí:**
+
+## [ANDROID APK](https://mega.nz/file/fJZCAYgY#IGUFQ7tvNTtIITRC6dL3AC2wPdvCtHn3iuif13z0aLQ)
+
 ## Descripción
 
 CameraApp es una aplicación móvil desarrollada con Ionic y Angular que permite a los usuarios tomar fotografías desde su dispositivo. Una de sus características principales es la opción de seleccionar la calidad de la foto antes de capturarla, permitiendo elegir entre calidad al 100% o al 50%. Esto es útil para ahorrar espacio de almacenamiento o para compartir imágenes más ligeras.
@@ -27,18 +31,22 @@ CameraApp es una aplicación móvil desarrollada con Ionic y Angular que permite
 
 1. Clona el repositorio:
 
-```
+```bash
 git clone https://github.com/MTDEV2312/Camera_Movil_App.git
 ```
-2. Carpeta
-```
+2. Ingresa a la carpeta del proyecto:
+```bash
 cd Camera_Movil_App
 ```
-3. Dependencias
-```
+3. Instala las dependencias:
+```bash
 npm install
 ```
-4. Iniciar el Proyecto
-```
+4. Inicia el proyecto en modo desarrollo:
+```bash
 ionic serve
 ```
+
+---
+
+**Para instalar la aplicación en tu dispositivo Android, descarga el APK desde el enlace destacado arriba.**
