@@ -2,7 +2,7 @@
 
 # **Descarga el APK aquí:**
 
-## [ANDROID APK](https://mega.nz/file/fJZCAYgY#IGUFQ7tvNTtIITRC6dL3AC2wPdvCtHn3iuif13z0aLQ)
+## [ANDROID APK](https://mega.nz/file/GRJEiaBQ#xJ9OZ8jYqGiBMCQ_LGLS-QfMkJO-IMobo77DIdxkK0M)
 
 ## Descripción
 
